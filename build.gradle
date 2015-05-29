@@ -1,0 +1,39 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+	id 'application'
+	
+	id 'com.github.hierynomus.license' version '0.11.0'
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven {
+		name  "gameminers"
+		url "http://mvn.gameminers.com/artifactory/repo"
+	}
+}
+
+defaultTasks 'licenseFormat', 'build'
+
+dependencies {
+
+}
+
+archivesBaseName = "MCSDEF"
+version = "1.0.0-pre1"
+
+license {
+	header file('HEADER')
+	excludes(["src/main/resources/**/*.*"])
+	sourceSets = project.sourceSets
+	ignoreFailures false
+	strictCheck true
+	skipExistingHeaders true
+	mapping("java", "SLASHSTAR_STYLE")
+}
+
+sourceCompatibility = "1.6"
+targetCompatibility = "1.6"
